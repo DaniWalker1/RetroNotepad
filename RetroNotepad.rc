@@ -1,0 +1,172 @@
+#include <windows.h>
+#include "resource.h"
+
+// Icono principal
+IDI_APP_ICON ICON "app.ico"
+
+// Manifiesto de aislamiento v6 y DPI
+1 RT_MANIFEST "manifest.xml"
+
+// Tabla de Aceleradores
+IDR_ACCELERATOR ACCELERATORS
+BEGIN
+    "N",            IDM_FILE_NEW,           VIRTKEY, CONTROL, NOINVERT
+    "N",            IDM_FILE_NEW_WINDOW,    VIRTKEY, CONTROL, SHIFT, NOINVERT
+    "O",            IDM_FILE_OPEN,          VIRTKEY, CONTROL, NOINVERT
+    "S",            IDM_FILE_SAVE,          VIRTKEY, CONTROL, NOINVERT
+    "S",            IDM_FILE_SAVEAS,        VIRTKEY, CONTROL, SHIFT, NOINVERT
+    "P",            IDM_FILE_PRINT,         VIRTKEY, CONTROL, NOINVERT
+
+    "Z",            IDM_EDIT_UNDO,          VIRTKEY, CONTROL, NOINVERT
+    "X",            IDM_EDIT_CUT,           VIRTKEY, CONTROL, NOINVERT
+    "C",            IDM_EDIT_COPY,          VIRTKEY, CONTROL, NOINVERT
+    "V",            IDM_EDIT_PASTE,         VIRTKEY, CONTROL, NOINVERT
+    VK_DELETE,      IDM_EDIT_DELETE,        VIRTKEY, NOINVERT
+    "E",            IDM_EDIT_SEARCH_BING,   VIRTKEY, CONTROL, NOINVERT
+    "F",            IDM_EDIT_FIND,          VIRTKEY, CONTROL, NOINVERT
+    VK_F3,          IDM_EDIT_FIND_NEXT,     VIRTKEY, NOINVERT
+    VK_F3,          IDM_EDIT_FIND_PREV,     VIRTKEY, SHIFT, NOINVERT
+    "H",            IDM_EDIT_REPLACE,       VIRTKEY, CONTROL, NOINVERT
+    "G",            IDM_EDIT_GOTO,          VIRTKEY, CONTROL, NOINVERT
+    "A",            IDM_EDIT_SELECTALL,     VIRTKEY, CONTROL, NOINVERT
+    VK_F5,          IDM_EDIT_TIMEDATE,      VIRTKEY, NOINVERT
+
+    // Zoom
+    VK_ADD,         IDM_VIEW_ZOOM_IN,       VIRTKEY, CONTROL, NOINVERT
+    VK_OEM_PLUS,    IDM_VIEW_ZOOM_IN,       VIRTKEY, CONTROL, NOINVERT
+    VK_SUBTRACT,    IDM_VIEW_ZOOM_OUT,      VIRTKEY, CONTROL, NOINVERT
+    VK_OEM_MINUS,   IDM_VIEW_ZOOM_OUT,      VIRTKEY, CONTROL, NOINVERT
+    "0",            IDM_VIEW_ZOOM_RESET,    VIRTKEY, CONTROL, NOINVERT
+    VK_NUMPAD0,     IDM_VIEW_ZOOM_RESET,    VIRTKEY, CONTROL, NOINVERT
+END
+
+// Menú Principal
+IDR_MAIN_MENU MENU
+BEGIN
+    POPUP "&Archivo"
+    BEGIN
+        MENUITEM "&Nuevo\tCtrl+N",                      IDM_FILE_NEW
+        MENUITEM "Nueva &ventana\tCtrl+Mayús+N",        IDM_FILE_NEW_WINDOW
+        MENUITEM "&Abrir...\tCtrl+O",                   IDM_FILE_OPEN
+        MENUITEM "&Guardar\tCtrl+S",                    IDM_FILE_SAVE
+        MENUITEM "Guardar &como...\tCtrl+Mayús+S",      IDM_FILE_SAVEAS
+        MENUITEM SEPARATOR
+        MENUITEM "Configurar &página...",               IDM_FILE_PAGESETUP, GRAYED
+        MENUITEM "&Imprimir...\tCtrl+P",                IDM_FILE_PRINT
+        MENUITEM SEPARATOR
+        MENUITEM "&Salir",                              IDM_FILE_EXIT
+    END
+    POPUP "&Edición"
+    BEGIN
+        MENUITEM "&Deshacer\tCtrl+Z",                   IDM_EDIT_UNDO
+        MENUITEM SEPARATOR
+        MENUITEM "Cor&tar\tCtrl+X",                     IDM_EDIT_CUT
+        MENUITEM "&Copiar\tCtrl+C",                     IDM_EDIT_COPY
+        MENUITEM "&Pegar\tCtrl+V",                      IDM_EDIT_PASTE
+        MENUITEM "&Eliminar\tSupr",                     IDM_EDIT_DELETE
+        MENUITEM SEPARATOR
+        MENUITEM "Búsqueda con &Bing...\tCtrl+E",       IDM_EDIT_SEARCH_BING
+        MENUITEM "&Buscar...\tCtrl+F",                  IDM_EDIT_FIND
+        MENUITEM "Buscar &siguiente\tF3",               IDM_EDIT_FIND_NEXT
+        MENUITEM "Buscar &anterior\tMayús+F3",          IDM_EDIT_FIND_PREV
+        MENUITEM "&Reemplazar...\tCtrl+H",              IDM_EDIT_REPLACE
+        MENUITEM "&Ir a...\tCtrl+G",                    IDM_EDIT_GOTO
+        MENUITEM SEPARATOR
+        MENUITEM "Seleccionar &todo\tCtrl+A",           IDM_EDIT_SELECTALL
+        MENUITEM "&Hora y fecha\tF5",                   IDM_EDIT_TIMEDATE
+    END
+    POPUP "F&ormato"
+    BEGIN
+        MENUITEM "&Ajuste de línea",                    IDM_FORMAT_WORDWRAP
+        MENUITEM "&Fuente...",                          IDM_FORMAT_FONT
+    END
+    POPUP "&Ver"
+    BEGIN
+        POPUP "&Zoom"
+        BEGIN
+            MENUITEM "&Acercar\tCtrl+Más",               IDM_VIEW_ZOOM_IN
+            MENUITEM "A&lejar\tCtrl+Menos",             IDM_VIEW_ZOOM_OUT
+            MENUITEM "&Restaurar zoom predeterminado\tCtrl+0", IDM_VIEW_ZOOM_RESET
+        END
+        MENUITEM "&Barra de estado",                    IDM_VIEW_STATUSBAR, CHECKED
+        MENUITEM SEPARATOR
+        POPUP "&Tema"
+        BEGIN
+            MENUITEM "&Acorde al sistema",              IDM_VIEW_THEME_SYSTEM, CHECKED
+            MENUITEM "&Claro",                          IDM_VIEW_THEME_LIGHT
+            MENUITEM "&Oscuro",                         IDM_VIEW_THEME_DARK
+        END
+        POPUP "&Idioma / Language"
+        BEGIN
+            MENUITEM "&Español",                        IDM_VIEW_LANG_ES, CHECKED
+            MENUITEM "&English",                        IDM_VIEW_LANG_EN
+        END
+    END
+    POPUP "A&yuda"
+    BEGIN
+        MENUITEM "&Ver la Ayuda",                       IDM_HELP_VIEWHELP
+        MENUITEM "&Enviar comentarios",                 IDM_HELP_FEEDBACK
+        MENUITEM SEPARATOR
+        MENUITEM "&Acerca de Retro Notepad",            IDM_HELP_ABOUT
+    END
+END
+
+// Diálogo Ir a la Línea
+IDD_GOTO DIALOGEX 0, 0, 180, 65
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Ir a la línea"
+FONT 9, "Segoe UI"
+BEGIN
+    LTEXT           "Número de línea:", -1, 10, 10, 100, 12
+    EDITTEXT        IDC_GOTO_LINE, 10, 24, 160, 14, ES_AUTOHSCROLL | ES_NUMBER
+    DEFPUSHBUTTON   "Ir a", IDOK, 65, 45, 50, 14
+    PUSHBUTTON      "Cancelar", IDCANCEL, 120, 45, 50, 14
+END
+
+// Diálogo Acerca de Retro Notepad
+IDD_ABOUT DIALOGEX 0, 0, 250, 155
+STYLE DS_MODALFRAME | DS_CENTER | WS_POPUP | WS_CAPTION | WS_SYSMENU
+CAPTION "Acerca de Retro Notepad"
+FONT 9, "Segoe UI"
+BEGIN
+    ICON            IDI_APP_ICON, IDC_ABOUT_ICON, 14, 14, 21, 20
+    LTEXT           "Retro Notepad", IDC_ABOUT_TITLE, 46, 14, 190, 14, SS_NOPREFIX
+    LTEXT           "Versión 1.0 (64-bit)", IDC_ABOUT_VERSION, 46, 28, 190, 10
+    LTEXT           "Desarrollador: Daniel Valenzuela", IDC_ABOUT_DEV, 46, 42, 190, 10
+    LTEXT           "Clon 1:1 de Bloc de notas desarrollado en C++20 nativo con Win32 API pura.\n\nUltra ligero, de alta velocidad, seguro.", IDC_ABOUT_DESC, 46, 60, 190, 52
+    DEFPUSHBUTTON   "Aceptar", IDOK, 188, 130, 50, 16
+END
+
+// Información de versión del binario
+VS_VERSION_INFO VERSIONINFO
+FILEVERSION     1,0,0,0
+PRODUCTVERSION  1,0,0,0
+FILEFLAGSMASK   0x3fL
+#ifdef _DEBUG
+FILEFLAGS       0x1L
+#else
+FILEFLAGS       0x0L
+#endif
+FILEOS          0x40004L
+FILETYPE        0x1L
+FILESUBTYPE     0x0L
+BEGIN
+    BLOCK "StringFileInfo"
+    BEGIN
+        BLOCK "040904b0"
+        BEGIN
+            VALUE "CompanyName",      "Daniel Valenzuela"
+            VALUE "FileDescription",  "Retro Notepad"
+            VALUE "FileVersion",      "1.0.0.0"
+            VALUE "InternalName",     "RetroNotepad"
+            VALUE "LegalCopyright",   "Copyright (C) 2026 Daniel Valenzuela"
+            VALUE "OriginalFilename", "RetroNotepad.exe"
+            VALUE "ProductName",      "Retro Notepad"
+            VALUE "ProductVersion",   "1.0.0.0"
+        END
+    END
+    BLOCK "VarFileInfo"
+    BEGIN
+        VALUE "Translation", 0x409, 1200
+    END
+END

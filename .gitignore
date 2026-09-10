@@ -1,0 +1,42 @@
+# ==============================================================================
+# Retro Notepad - .gitignore
+# ==============================================================================
+
+# Directorios de compilación y salida de CMake / Ninja / Visual Studio
+build/
+bin/
+out/
+x64/
+x86/
+Debug/
+Release/
+
+# Archivos de caché y configuración de Visual Studio
+.vs/
+*.user
+*.suo
+*.sln.docstates
+
+# Archivos objeto y binarios generados
+*.obj
+*.res
+*.exe
+*.pdb
+*.ilk
+*.idb
+*.lib
+*.exp
+*.ninja_deps
+*.ninja_log
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Archivos temporales y de backup
+*.tmp
+*.tmp~
+*.bak
+*.log
+
+# Suite sintética generada dinámicamente (se genera mediante generate_test_suite.ps1)
+test_suite/
